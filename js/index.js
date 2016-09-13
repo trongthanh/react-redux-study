@@ -4,15 +4,20 @@
 // eslint-disable-next-line
 import React from 'react'; // Since we're using JSX-syntax for <App/> as below, React module is required here
 import { AppContainer } from 'react-hot-loader';
-import { App } from './App';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
+
+import { App } from './App';
+import store from './store';
 
 let rootEl = document.getElementById('app');
 
 ReactDOM.render(
-	<AppContainer>
-		<App/>
-	</AppContainer>,
+	<Provider store={store}>
+		<AppContainer>
+			<App/>
+		</AppContainer>
+	</Provider>,
 	rootEl
 );
 
@@ -22,9 +27,11 @@ if (module.hot) {
 		// use <App /> here rather than require() a <NextApp />.
 		const NextApp = require('./App').App;
 		ReactDOM.render(
-			<AppContainer>
-				<NextApp />
-			</AppContainer>,
+			<Provider store={store}>
+				<AppContainer>
+					<NextApp />
+				</AppContainer>
+			</Provider>,
 			rootEl
 		);
 	});

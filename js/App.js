@@ -1,14 +1,13 @@
 import React from 'react';
-import { connect, Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import CounterComponent from './CounterComponent';
-import store from './store';
 
 class AppComponent extends React.Component {
 
 	render () {
 		return (
 			<div>
-				<h2>Counter React Redux Example</h2>
+				<h2>React Redux Counter Example</h2>
 				<CounterComponent
 					counter={this.props.counter}
 					onPlusClick={this.props.onInc.bind(this)}
@@ -39,14 +38,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(AppComponent);
-
-export class App extends React.Component {
-	render() {
-		return (
-			<Provider store={store}>
-				<AppContainer />
-			</Provider>
-		);
-	}
-}
+export const App = connect(mapStateToProps, mapDispatchToProps)(AppComponent);
