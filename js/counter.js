@@ -16,7 +16,7 @@ export function counter(state = 0, action = {}) {
 	}
 }
 
-// TESTING:
+// SIMPLE UNIT TESTING:
 expect(
 	counter(0, { type: 'INC' })
 ).toEqual(1);
